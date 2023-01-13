@@ -1,0 +1,27 @@
+{% include 'header.html' %}
+
+<main class="px-3">
+    <h1>Востребованность</h1>
+    {% load static %}
+    <img src="{% static 'graph.png' %}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="1350" height="900" loading="lazy"><br>
+    <table style="font-size: 20px">
+        <tr>
+            <th>Год</th>
+            <th>Средняя зарплата</th>
+            <th>Средняя зарплата - {{name}}</th>
+            <th>Количество вакансий</th>
+            <th>Количество вакансий - {{name}}</th>
+        </tr>
+    {% for statistic in statistics_by_years %}
+        <tr>
+            <td style="font-weight: normal">{{  statistic.title  }}</td>
+            <td style="font-weight: normal">{{  statistic.average_salary }}</td>
+            <td style="font-weight: normal">{{  statistic.average_salary_for_name }}</td>
+            <td style="font-weight: normal">{{  statistic.vacancies_count }}</td>
+            <td style="font-weight: normal">{{  statistic.average_salary_for_name }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</main>
+
+{% include 'footer.html' %}

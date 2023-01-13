@@ -1,0 +1,44 @@
+{% include 'header.html' %}
+<style>
+    .wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  grid-auto-rows: auto;
+}
+</style>
+<main class="px-3">
+    <h1>Последние Вакансии:</h1>
+    <div>
+        <div class="wrapper">
+        {% for vacancy in vacancies %}
+            <div id="left" class="container-fluid border border-3 rounded-3 shadow-lg mb-4 text-left" style="border: 10px aliceblue;width: 350px;font-size: 20px">
+                <h1>
+                    <a href="https://nn.hh.ru/vacancy/{{ vacancy.id }}?hhtmFrom=vacancy_edit&utm_medium=cpc_hh&utm_source=clickmehhru&utm_campaign=142109&utm_local_campaign=399992&utm_content=165368&utm_vacancy=54598870">{{ vacancy.name }}</a>
+                </h1>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle text-white" type="button" data-toggle="dropdown" style="font-size: 20px">Описание вакансии</button>
+                    <ul class="dropdown-menu">
+                        <li>{{ vacancy.description | safe}}</li>
+                    </ul>
+                  </div>
+                <p>Наниматель: {{ vacancy.employer.name }}</p>
+                {% if vacancy.salary %}
+                    <p>Оклад:</p>
+                    {% if vacancy.salary.from %}
+                        <p>*  От: {{ vacancy.salary.from }} {{ vacancy.salary.currency }}</p>
+                    {% endif %}
+                    {% if vacancy.salary.to %}
+                        <p>*  До: {{ vacancy.salary.to }} {{ vacancy.salary.currency }}</p>
+                    {% endif %}
+                {% else %}
+                    <p>Оклад не указан</p>
+                {% endif %}
+                <p>Регион: {{ vacancy.area.name }}</p>
+                <p>Дата публикации: {{ vacancy.published_at }}</p>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</main>
+
+{% include 'footer.html' %}
