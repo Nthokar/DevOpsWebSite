@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from jinja2 import Environment, FileSystemLoader
-from app1.models import StatisticByYear, StatisticByCity
+from app1.models import StatisticByYear, StatisticByCity, StatisticBySkills
 from app1.hh import get_vacancies, get_last_vacancies
 
 def index_page(request):
@@ -15,7 +14,10 @@ def geography_page(request):
 
 
 def skills_page(request):
-    return render(request, 'skills.html')
+    data = {
+        'statistics_by_skills': StatisticBySkills.objects.get_queryset()
+    }
+    return render(request, 'skills.html', context=data)
 
 
 def last_vacancies_page(request, vacancy_count=10):

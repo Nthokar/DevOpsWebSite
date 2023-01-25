@@ -3,22 +3,16 @@
 <main class="px-3">
     <h1>Навыки</h1>
     {% load static %}
-    <img src="{% static 'graph3.png' %}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="1350" height="900" loading="lazy"><br>
+    <img src="{% static 'graphBySkills.png' %}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="1350" height="900" loading="lazy"><br>
     <table style="font-size: 20px">
         <tr>
-            <th>Год</th>
-            <th>Средняя зарплата</th>
-            <th>Средняя зарплата - {{name}}</th>
-            <th>Количество вакансий</th>
-            <th>Количество вакансий - {{name}}</th>
+            <th>Навык</th>
+            <th>Количество упоминаний</th>
         </tr>
-    {% for statistic in statistics_by_years %}
+    {% for statistic in statistics_by_skills %}
         <tr>
             <td style="font-weight: normal">{{  statistic.title  }}</td>
-            <td style="font-weight: normal">{{  statistic.average_salary }}</td>
-            <td style="font-weight: normal">{{  statistic.average_salary_for_name }}</td>
-            <td style="font-weight: normal">{{  statistic.vacancies_count }}</td>
-            <td style="font-weight: normal">{{  statistic.average_salary_for_name }}</td>
+            <td style="font-weight: normal">{{  statistic.number_of_references }}</td>
         </tr>
     {% endfor %}
     </table>

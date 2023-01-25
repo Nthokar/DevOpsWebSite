@@ -20,3 +20,9 @@ class StatisticByCity(models.Model):
 
     average_salary = models.FloatField('Уровень зарплат по городам')
     proportion = models.FloatField('Доля вакансий по городам')
+
+
+class StatisticBySkills(models.Model):
+    title = models.CharField('Наавык', max_length=20)
+
+    number_of_references = models.IntegerField('Количество упоминаний')
