@@ -8,17 +8,17 @@
         <tr>
             <th>Год</th>
             <th>Средняя зарплата</th>
-            <th>Средняя зарплата - {{name}}</th>
             <th>Количество вакансий</th>
+            <th>Средняя зарплата - {{name}}</th>
             <th>Количество вакансий - {{name}}</th>
         </tr>
     {% for statistic in statistics_by_years %}
         <tr>
             <td style="font-weight: normal">{{  statistic.title  }}</td>
             <td style="font-weight: normal">{{  statistic.average_salary }}</td>
-            <td style="font-weight: normal">{{  statistic.average_salary_for_name }}</td>
             <td style="font-weight: normal">{{  statistic.vacancies_count }}</td>
             <td style="font-weight: normal">{{  statistic.average_salary_for_name }}</td>
+            <td style="font-weight: normal">{{  statistic.vacancies_count_for_name }}</td>
         </tr>
     {% endfor %}
     </table>
